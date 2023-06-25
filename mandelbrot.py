@@ -41,7 +41,7 @@ if __name__ == "__main__":
     blockspergrid_y = int(np.ceil(out.shape[1] / threadsperblock[1]))
     blockspergrid = (blockspergrid_x, blockspergrid_y)
 
-    iters_since_set, update_per_iters = 0, 15
+    iters_since_set, update_per_iters = 0, 10
     min, max = complex(-2.0, -1.5), complex(1.0, 1.5)
     center = complex(-0.71375, -0.24999)
     goal = complex(-0.71375, -0.24999)
@@ -64,8 +64,8 @@ if __name__ == "__main__":
             iters_since_set += 1
 
         # Smoothly align center with goal
-        center = complex((center.real * 0.9) + (goal.real * 0.1),
-                         (center.imag * 0.9) + (goal.imag * 0.1))
+        center = complex((center.real * 0.85) + (goal.real * 0.15),
+                         (center.imag * 0.85) + (goal.imag * 0.15))
 
         # Define new min and max by zooming into center
         zoom = 0.98
